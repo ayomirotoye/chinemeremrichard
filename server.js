@@ -1,12 +1,10 @@
 import express from "express";
-import express from "express";
 import Queue from "better-queue";
 import _ from "lodash";
-import fs from "fs";
-const path = "./data/file.json";
+
 
 const app = express();
-const PORT = 8080;
+const PORT = 5000;
 
 //Generate an array of 20 random tasks;
 var tasksList = _.times(20, _.uniqueId.bind(null, "task_"));
@@ -14,7 +12,7 @@ var tasksList = _.times(20, _.uniqueId.bind(null, "task_"));
 /** Decode Form URL Encoded data */
 app.use(express.urlencoded());
 
-/** Show page with a form */
+/** Show page with  task */
 app.get("/", (req, res) => {
   res.send(JSON.stringify(tasksList));
 });
@@ -23,7 +21,7 @@ app.get("/", (req, res) => {
 var q = new Queue(function (task, cb) {
   console.log(task);
   cb();
-});
+},{ maxRetries: 10, retryDelay: 1000 });
 q.push(tasksList)
   .on("finish", function (result) {
     console.log(`Task succeeded with`, result);
