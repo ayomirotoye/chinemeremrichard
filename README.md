@@ -8,3 +8,8 @@
 4. Items can be fetched based on patterns
 
 Deadline: April 17th, 2022
+
+## Setup
+- Install NodeJS
+- pull this repo
+- run `npm start`
