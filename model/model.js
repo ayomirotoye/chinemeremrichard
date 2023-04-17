@@ -7,11 +7,7 @@ const productSchema = mongoose.Schema({
   price: {
     type: String,
     required: [true, "Please include the product price"],
-  },
- image: {
-    type: String,
-    required: true,
-  },
+  }
 });
 const Product = mongoose.model("Product", productSchema);
 module.exports = Product;

@@ -3,8 +3,12 @@ const bodyParser = require("body-parser");
 
 const db = require("./db");
 
+
+
 const app = express();
 const PORT = 5000;
+
+require('./routeHandler')(app)
 
 app.use(bodyParser.json());
 
