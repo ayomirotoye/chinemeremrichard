@@ -19,8 +19,7 @@ app.get("/", (req, res) => {
 db.connectToMongoDB().then(() => {
   // Start Listenting for the server on PORT
   app.listen(PORT, () =>
-    success({
-      message: `Server successfully started on http://localhost:${PORT}`,
-    })
+    console.log(`Server successfully started on http://localhost:${PORT}`)
+
   );
 });
