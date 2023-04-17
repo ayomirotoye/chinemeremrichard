@@ -3,14 +3,14 @@ const bodyParser = require("body-parser");
 
 const db = require("./db");
 
-
-
 const app = express();
 const PORT = 5000;
 
-require('./routeHandler')(app)
+
 
 app.use(bodyParser.json());
+
+require("./routeHandler")(app);
 
 /** Show page with  task */
 app.get("/", (req, res) => {
@@ -24,6 +24,5 @@ db.connectToMongoDB().then(() => {
   // Start Listenting for the server on PORT
   app.listen(PORT, () =>
     console.log(`Server successfully started on http://localhost:${PORT}`)
-
   );
 });
